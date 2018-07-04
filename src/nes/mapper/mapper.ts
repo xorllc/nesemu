@@ -17,7 +17,7 @@ export interface MapperOptions {
 }
 
 export class Mapper {
-  public reset() {
+  public reset(): void {
   }
 
   public onHblank(_hcount: number): void {
