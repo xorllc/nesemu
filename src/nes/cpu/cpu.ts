@@ -480,6 +480,11 @@ export class Cpu {
       this.pc = this.read16(VEC_IRQ)
       this.irqBlocked = 1
       break
+
+    case 57:  // SKB
+    case 58:  // SKW
+      // Nothing
+      break
     }
     // ========================================================
 
@@ -636,7 +641,7 @@ export class Cpu {
         return this.read16Indirect(adr)
       }
     default:
-      console.error(`Illegal addressing: ${addressing}`)
+      console.error(`Illegal addressing: ${addressing}, pc=${Util.hex(pc, 4)}`)
       this.paused = true
       return 0
     }

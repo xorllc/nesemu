@@ -41,6 +41,10 @@ export const enum OpType {
   CLC, SEC,
   SEI, CLI, CLV, SED, CLD,
   BRK,
+
+  // Extra instructions
+  SKB,  // Skip next byte
+  SKW,  // Skip next word
 }
 
 export interface Instruction {
@@ -244,6 +248,33 @@ const kTable = [
   [0xd8, OpType.CLD, Addressing.IMPLIED, 1, 2],
 
   [0x00, OpType.BRK, Addressing.IMPLIED, 1, 7],
+
+  // Undefined
+  [0x1a, OpType.NOP, Addressing.IMPLIED, 1, 2],
+  [0x3a, OpType.NOP, Addressing.IMPLIED, 1, 2],
+  [0x5a, OpType.NOP, Addressing.IMPLIED, 1, 2],
+  [0x7a, OpType.NOP, Addressing.IMPLIED, 1, 2],
+  [0xda, OpType.NOP, Addressing.IMPLIED, 1, 2],
+  [0xfa, OpType.NOP, Addressing.IMPLIED, 1, 2],
+
+  [0x04, OpType.SKB, Addressing.IMMEDIATE, 2, 2],
+  [0x14, OpType.SKB, Addressing.IMMEDIATE, 2, 2],
+  [0x34, OpType.SKB, Addressing.IMMEDIATE, 2, 2],
+  [0x44, OpType.SKB, Addressing.IMMEDIATE, 2, 2],
+  [0x54, OpType.SKB, Addressing.IMMEDIATE, 2, 2],
+  [0x64, OpType.SKB, Addressing.IMMEDIATE, 2, 2],
+  [0x74, OpType.SKB, Addressing.IMMEDIATE, 2, 2],
+  [0xd4, OpType.SKB, Addressing.IMMEDIATE, 2, 2],
+  [0xf4, OpType.SKB, Addressing.IMMEDIATE, 2, 2],
+  [0x89, OpType.SKB, Addressing.IMMEDIATE, 2, 2],
+
+  [0x0c, OpType.SKW, Addressing.ABSOLUTE, 3, 4],
+  [0x1c, OpType.SKW, Addressing.ABSOLUTE, 3, 4],
+  [0x3c, OpType.SKW, Addressing.ABSOLUTE, 3, 4],
+  [0x5c, OpType.SKW, Addressing.ABSOLUTE, 3, 4],
+  [0x7c, OpType.SKW, Addressing.ABSOLUTE, 3, 4],
+  [0xdc, OpType.SKW, Addressing.ABSOLUTE, 3, 4],
+  [0xfc, OpType.SKW, Addressing.ABSOLUTE, 3, 4],
 ]
 
 export const kIllegalInstruction: Instruction = {
