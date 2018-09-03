@@ -485,6 +485,21 @@ export class Cpu {
     case 58:  // SKW
       // Nothing
       break
+
+    case 59:  // ISC
+      {
+        const value = inc8(this.read8(adr))
+        this.write8(adr, value)
+
+        const carry = this.carry
+        const operand = 255 - value
+        const result = this.a + operand + carry
+        const overflow = ((this.a ^ result) & (operand ^ result) & 0x80) !== 0
+        this.a = result & 0xff
+        this.setNZCFlag(this.a, result >= 0x0100)
+        this.setOverFlow(overflow)
+      }
+      break
     }
     // ========================================================
 

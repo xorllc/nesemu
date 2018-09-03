@@ -45,6 +45,7 @@ export const enum OpType {
   // Extra instructions
   SKB,  // Skip next byte
   SKW,  // Skip next word
+  ISC,  // INC-SBC abs,X
 }
 
 export interface Instruction {
@@ -275,6 +276,8 @@ const kTable = [
   [0x7c, OpType.SKW, Addressing.ABSOLUTE, 3, 4],
   [0xdc, OpType.SKW, Addressing.ABSOLUTE, 3, 4],
   [0xfc, OpType.SKW, Addressing.ABSOLUTE, 3, 4],
+
+  [0xff, OpType.ISC, Addressing.ABSOLUTE, 3, 4],
 ]
 
 export const kIllegalInstruction: Instruction = {
