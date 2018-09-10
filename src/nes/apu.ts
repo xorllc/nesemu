@@ -341,13 +341,30 @@ class TriangleChannel extends Channel {
 class NoiseChannel extends Channel {
   private lengthCounter = 0
 
+  private envelopeDivider = 0  // i.e. Envelope counter
+  private envelopeCounter = 0  // i.e. Envelope volume
+  private envelopeReset = false
+
+  public reset() {
+    super.reset()
+    this.envelopeDivider = this.envelopeCounter = 0
+  }
+
   public write(reg: number, value: Byte) {
     super.write(reg, value)
 
     switch (reg) {
+    case REG_STATUS:
+      this.stopped = false
+      if ((value & CONSTANT_VOLUME) === 0) {
+        this.envelopeDivider = value & 0x0f
+        this.envelopeCounter = 0x0f
+      }
+      break
     case REG_TIMER_H:  // Set length.
       this.lengthCounter = kLengthTable[value >> 3]
       this.stopped = false
+      this.envelopeReset = true
       break
     default:
       break
@@ -361,7 +378,7 @@ class NoiseChannel extends Channel {
     let v = this.regs[REG_STATUS]
     if ((v & CONSTANT_VOLUME) !== 0)
       return (v & 15) / 15
-    return 1
+    return this.envelopeCounter / 15
   }
 
   public getFrequency(): number {
@@ -374,6 +391,7 @@ class NoiseChannel extends Channel {
       return
 
     this.updateLength()
+    this.updateEnvelope()
   }
 
   private updateLength(): void {
@@ -392,6 +410,34 @@ class NoiseChannel extends Channel {
         l = 0
     }
     this.lengthCounter = l
+  }
+
+  private updateEnvelope(): void {
+    if ((this.regs[REG_STATUS] & CONSTANT_VOLUME) !== 0)
+      return
+
+    if (this.envelopeReset) {
+      this.envelopeReset = false
+      this.envelopeCounter = 0x0f
+      this.envelopeDivider = this.regs[REG_STATUS] & 0x0f
+      return
+    }
+
+    const DEC = 2;
+    if (this.envelopeDivider >= DEC) {
+      this.envelopeDivider -= DEC
+    } else {
+      if (this.envelopeCounter > 0) {
+        --this.envelopeCounter
+        this.envelopeDivider += this.regs[REG_STATUS] & 0x0f
+      } else {
+        this.envelopeCounter = 0
+        if ((this.regs[REG_STATUS] & ENVELOPE_LOOP) !== 0) {
+          this.envelopeCounter = 0x0f
+          this.envelopeDivider += this.regs[REG_STATUS] & 0x0f
+        }
+      }
+    }
   }
 }
 
