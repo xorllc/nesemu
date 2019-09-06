@@ -2,8 +2,8 @@ import WindowManager from '../wnd/window_manager'
 import {Wnd} from '../wnd/wnd'
 
 import DomUtil from '../util/dom_util'
-import {Nes} from '../nes/nes'
-import {kColors} from '../nes/ppu/const'
+import {Nes} from 'tsnes-core'
+import {kColors} from 'tsnes-core'
 
 import {AppEvent} from './app_event'
 

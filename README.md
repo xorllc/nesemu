@@ -42,6 +42,8 @@ NES emulator written in TypeScript.
 ### Set up
 
 ```bash
+$ pushd mymodules/tsnes-core && npm link && popd
+$ npm link tsnes-core
 $ npm install
 ```
 

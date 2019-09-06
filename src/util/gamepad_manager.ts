@@ -1,5 +1,5 @@
 import DomUtil from '../util/dom_util'
-import {PadBit} from '../nes/apu'
+import {PadBit} from 'tsnes-core'
 import StorageUtil from '../util/storage_util'
 import WindowManager from '../wnd/window_manager'
 import {Wnd} from '../wnd/wnd'

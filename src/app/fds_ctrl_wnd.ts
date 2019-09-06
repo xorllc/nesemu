@@ -1,5 +1,5 @@
 import DomUtil from '../util/dom_util'
-import {Fds} from '../nes/fds/fds'
+import {Fds} from 'tsnes-core'
 import WindowManager from '../wnd/window_manager'
 import {Wnd} from '../wnd/wnd'
 

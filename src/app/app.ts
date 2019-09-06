@@ -1,9 +1,9 @@
-import {Nes} from '../nes/nes'
-import {MirrorMode} from '../nes/ppu/types'
+import {Nes} from 'tsnes-core'
+import {MirrorMode} from 'tsnes-core'
 
 import {AppEvent} from './app_event'
 import {AudioManager} from '../util/audio_manager'
-import {Fds} from '../nes/fds/fds'
+import {Fds} from 'tsnes-core'
 import {FdsCtrlWnd} from './fds_ctrl_wnd'
 import {KeyCode} from '../util/key_code'
 import {RegisterWnd, TraceWnd, ControlWnd} from './debug_wnd'

@@ -1,7 +1,7 @@
 import * as fs from 'fs'
 
-import {Addressing, Instruction, OpType, kInstTable} from '../src/nes/cpu/inst'
-import {kOpcode} from '../src/nes/cpu/disasm'
+import {Addressing, Instruction, OpType, kInstTable} from 'tsnes-core'
+import {kOpcode} from 'tsnes-core'
 import Util from '../src/util/util'
 
 import * as argv from 'argv'

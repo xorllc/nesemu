@@ -1,4 +1,4 @@
-import {PadValue} from '../nes/apu'
+import {PadValue} from 'tsnes-core'
 import {KeyCode} from './key_code'
 
 const kKeyTable: {[key: number]: {no: number, bit: number}} = {

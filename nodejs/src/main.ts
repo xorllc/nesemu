@@ -3,8 +3,8 @@ declare function __non_webpack_require__(fn: string)
 const fs = __non_webpack_require__('fs')
 
 import * as JSZip from 'jszip'
-import {Nes} from '../../src/nes/nes'
-import {PadValue} from '../../src/nes/apu'
+import {Nes} from 'tsnes-core'
+import {PadValue} from 'tsnes-core'
 import Util from '../../src/util/util'
 import {AudioManager} from '../../src/util/audio_manager'
 

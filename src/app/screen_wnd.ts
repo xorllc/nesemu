@@ -2,7 +2,7 @@ import WindowManager from '../wnd/window_manager'
 import {Wnd, WndEvent} from '../wnd/wnd'
 
 import DomUtil from '../util/dom_util'
-import {Nes} from '../nes/nes'
+import {Nes} from 'tsnes-core'
 import {Scaler, NearestNeighborScaler, ScanlineScaler, EpxScaler} from '../util/scaler'
 
 import {App} from './app'

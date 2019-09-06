@@ -1,4 +1,4 @@
-import {ChannelType} from '../nes/apu'
+import {ChannelType} from 'tsnes-core'
 
 abstract class SoundChannel {
   protected gainNode: GainNode

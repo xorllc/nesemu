@@ -25,7 +25,7 @@ export const enum PadValue {
   R = 1 << PadBit.R,
 }
 
-export const enum ChannelType {
+export enum ChannelType {
   PULSE,
   TRIANGLE,
   SAWTOOTH,
