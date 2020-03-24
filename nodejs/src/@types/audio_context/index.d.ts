@@ -32,6 +32,9 @@ interface DelayNode extends AudioNode {
 interface AudioDestinationNode extends AudioNode {
 }
 
+interface AnalyserNode extends AudioNode {
+}
+
 interface AudioContext {
   readonly currentTime: number
   readonly destination: AudioDestinationNode
@@ -40,4 +43,5 @@ interface AudioContext {
   createOscillator(): OscillatorNode
   createPeriodicWave(real: Float32Array, imag: Float32Array): PeriodicWave
   createDelay(): DelayNode
+  createAnalyser(): AnalyserNode
 }
