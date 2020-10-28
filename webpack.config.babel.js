@@ -4,7 +4,7 @@ import webpack from 'webpack'
 module.exports = {
   mode: 'production',
   entry: {
-    lib: ['./src/lib.ts'],
+    lib: './src/lib.ts',
     main: './src/main.ts',
   },
   output: {
@@ -26,7 +26,7 @@ module.exports = {
       cacheGroups: {
         lib: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'lib',
+          //name: 'lib',
           enforce: true,
           chunks: 'all',
         },
