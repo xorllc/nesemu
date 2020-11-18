@@ -72,7 +72,7 @@
     "core-js": "~3.6.5",
     "escape-html": "~1.0.3",
     "fscreen": "~1.0.2",
-    "jszip": "~3.5.0",
+    "jszip": "../jszip",
     "md5": "~2.3.0",
     "stats-js": "~1.0.1"
   }
